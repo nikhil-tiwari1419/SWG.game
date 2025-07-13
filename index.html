@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(88, 93, 191, 0.238);
+            font-family:Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        #gameBox {
+            background: rgba(53, 63, 210, 0.161);
+            height: 600px;
+            width: 400px;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        #gameBox h1:hover,
+        h3:hover {
+            color: rgb(109, 109, 198);
+            transition: all 0.3 ease-in-out;
+        }
+
+        #gameBox input {
+            padding: 20px;
+            margin: 20px;
+            width: 70%;
+            border: none;
+            border-radius: 20px;
+        }
+
+        #gameBox:hover {
+            box-shadow: 10px 10px 20px rgba(122, 137, 223, 0.5);
+        }
+
+        .gameContent {
+            height: auto;
+            border: 1px solid rgba(81, 131, 38, 0.453);
+            margin: 10px;
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+            border-radius: 30px;
+        }
+
+        .gameContent img {
+            height: 100px;
+
+        }
+
+        .gameContent img:hover {
+            background-color: rgba(0, 0, 255, 0.209);
+            border-radius: 40px;
+        }
+
+        #HumanGuess {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            transform: translateX(-50%) translateY(-10%);
+            opacity: 0;
+            border-radius: 30px;
+            border-top: none;
+            background: rgba(255, 160, 122, 0.6);
+            z-index: 99;
+            width: 50%;
+            left: 50%;
+            box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+            margin-top: 10px;
+            transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+        }
+
+        .dropdown.open {
+            display: block;
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .dropdown div {
+            padding: 2px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dropdown div::after {
+            content: "";
+            position: absolute;
+            left: 30%;
+            bottom: 5px;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #ff0080, #7928ca);
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .dropdown div:hover::after {
+            width: 50%;
+        }
+
+        .rotate {
+            animation: spin 0.5s linear;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .welcome-text {
+            position: absolute;
+            top: 5px;
+            left: 50%;
+            transform: translate(-50%);
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="welcome-text">💫 welcome to GAME zone 💫</h1>
+    <div id="gameBox">
+        <h1>-: GAME:-</h1>
+        <h3>Snake || Water || Gun</h3>
+        <p class="gameContent">
+            <img src="https://png.pngtree.com/png-clipart/20250710/original/pngtree-cute-green-cartoon-snake-with-tongue-out-png-image_21292021.png"
+                alt="Snake">
+            <img src="https://png.pngtree.com/png-vector/20250414/ourmid/pngtree-cartoon-water-splash-clipart-illustration-png-image_16013362.png"
+                alt="Water">
+            <img src="https://cdn1.iconfinder.com/data/icons/crime-11/500/SingleCartoonCrimeAlice1008-512.png"
+                alt="Gun">
+        </p>
+        <input type="text" id="ComputerGuess" placeholder="Computer Guess ">
+        <br>
+        <div style="position: relative;">
+            <input type="text" id="HumanGuess" placeholder="Human Guess">
+            <div class="dropdown" id="dropdown">
+                <div onclick="SelectOption('Snake')">Snake</div>
+                <div onclick="SelectOption('Water')">Water</div>
+                <div onclick="SelectOption('Gun')">Gun</div>
+            </div>
+            <button onclick="refreshPage()" style="border:none; background:none; cursor:pointer;">
+                <svg class="rotate" xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" stroke="black"
+                    stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M4 4v5h.582m15.318 1A8.963 8.963 0 0012 3a9 9 0 100 18c4.41 0 8.145-3.206 8.904-7.418" />
+                    <path d="M20 20v-5h-.581" />
+                </svg>
+            </button>
+        </div>
+        <div id="feedback"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
