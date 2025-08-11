@@ -16,18 +16,22 @@ function SelectOption(userChoice) {
     if (userChoice === computerChoice) {
         result = "It is Draw ‼️";
         // alert('The game is Draw !')
-    } else if (
-        (userChoice === 'Water' && computerChoice === 'Snake') ||
-        (userChoice === 'Gun' && computerChoice === 'Sanke') ||
-        (userChoice === 'Water' && computerChoice === 'Gun')
-    ) {
+    } else if (userChoice === 'Snake' && computerChoice === 'Water') 
+    {
         result = 'You win! 🎉';
-        // alert(' You Win ! ')
-    } else {
+       
+    } else if (userChoice==='Snake' && computerChoice ==='Gun'){
         result = 'computer win ! 🤦🏻‍♂️';
-        // alert(' Computer Win !');
+      
+    } else if(userChoice === 'Gun' && computerChoice ==='Water'){
+       result = 'you win 🎉' ;
+    } else if(userChoice ==='Gun' && computerChoice === 'Snake'){
+        result = 'computer win 🤦🏻‍♂️';
+    } else if(userChoice === 'Water' && computerChoice === 'Snake'){
+       result = 'you win 🎉';
+    } else if(userChoice === 'Water' && computerChoice === 'Gun'){
+        result = 'computer win 🤦🏻‍♂️';
     }
-
     let feedback = document.getElementById('feedback');
     if (!feedback) {
         feedback = document.createElement('div');
@@ -55,5 +59,6 @@ window.onclick = function (event) {
         document.getElementById('dropdown').classList.remove('open');
     }
 }
+
 
 
